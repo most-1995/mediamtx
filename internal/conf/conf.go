@@ -248,6 +248,7 @@ func (conf *Conf) setDefaults() {
 	conf.UDPMaxPayloadSize = 1472
 	conf.MetricsAddress = ":9998"
 	conf.PPROFAddress = ":9999"
+	conf.OptionalPaths = conf.ReadPathFromJsonFile()
 
 	// Authentication
 	conf.AuthInternalUsers = []AuthInternalUser{
@@ -696,6 +697,8 @@ func (conf *Conf) AddPath(name string, p *OptionalPath) error {
 	if conf.OptionalPaths == nil {
 		conf.OptionalPaths = make(map[string]*OptionalPath)
 	}
+
+	_ = conf.SavePathToJsonFile(name, p)
 
 	conf.OptionalPaths[name] = p
 	return nil
