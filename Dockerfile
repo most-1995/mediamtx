@@ -3,13 +3,13 @@ FROM --platform=linux/amd64 golang:1.22-alpine as builder
 WORKDIR /build
 
 COPY . .
-ENV GOARCH arm64 
+
 RUN go build -o ./mediamtx .
 
-FROM --platform=linux/amd64 alpine:3.17
+# FROM --platform=linux/amd64 alpine:3.17
 
-COPY --from=builder /build/mediamtx .
-COPY --from=builder /build/mediamtx.yml ./mediamtx.yml
+# COPY --from=builder /build/mediamtx .
+# COPY --from=builder /build/mediamtx.yml ./mediamtx.yml
 
 EXPOSE 8000
 EXPOSE 9000

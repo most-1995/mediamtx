@@ -2,9 +2,9 @@ version: '3'
 services:
     mediamtx:
       platform: linux/amd64
-      # image: mediamtx:latest
-      build:
-        dockerfile: Dockerfile
+      image: mediamtx:latest
+      # build:
+      #   dockerfile: Dockerfile
       hostname: mediamtx
       environment:
         MTX_PROTOCOLS: tcp
