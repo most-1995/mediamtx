@@ -2,7 +2,7 @@ package conf
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"os"
 )
 
 type StorePath struct {
@@ -14,7 +14,7 @@ func (conf *Conf) SavePathToJsonFile(name string, p *OptionalPath) string {
 
 	arrStorePath := []StorePath{}
 
-	data, err := ioutil.ReadFile("save_path.json")
+	data, err := os.ReadFile("./saved_path/save_path.json")
 
 	if err == nil {
 		err = json.Unmarshal(data, &arrStorePath)
@@ -37,13 +37,13 @@ func (conf *Conf) SavePathToJsonFile(name string, p *OptionalPath) string {
 		return ""
 	}
 
-	_ = ioutil.WriteFile("save_path.json", jsonData, 0644)
+	_ = os.WriteFile("./saved_path/save_path.json", jsonData, 0644)
 
 	return ""
 }
 
 func (conf *Conf) ReadPathFromJsonFile() map[string]*OptionalPath {
-	data, err := ioutil.ReadFile("save_path.json")
+	data, err := os.ReadFile("./saved_path/save_path.json")
 	if err != nil {
 		return nil
 	}

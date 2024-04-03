@@ -1,0 +1,24 @@
+version: '3'
+services:
+    mediamtx:
+      platform: linux/amd64
+      # image: mediamtx:latest
+      build:
+        dockerfile: Dockerfile
+      hostname: mediamtx
+      environment:
+        MTX_PROTOCOLS: tcp
+        MTX_WEBRTCADDITIONALHOSTS: 192.168.x.x
+      volumes:
+        # - ./mediamtx/mediamtx.yml:/mediamtx.yml
+        - ./recordings:/recordings
+        - ./saved_path:/saved_path
+      ports:
+        - "8554:8554"
+        - "1934:1935"
+        - "8888:8888"
+        - "8889:8889"
+        - "9997:9997"
+        - "9996:9996"
+        - "8890:8890/udp"
+        - "8189:8189/udp"
