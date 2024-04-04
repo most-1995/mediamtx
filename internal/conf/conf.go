@@ -711,6 +711,8 @@ func (conf *Conf) PatchPath(name string, optional2 *OptionalPath) error {
 		return ErrPathNotFound
 	}
 
+	_ = conf.UpdatePathFromJsonFile(name, optional2)
+
 	copyStructFields(optional.Values, optional2.Values)
 	return nil
 }
@@ -722,6 +724,8 @@ func (conf *Conf) ReplacePath(name string, optional2 *OptionalPath) error {
 		return ErrPathNotFound
 	}
 
+	_ = conf.UpdatePathFromJsonFile(name, optional2)
+
 	conf.OptionalPaths[name] = optional2
 	return nil
 }
@@ -731,6 +735,8 @@ func (conf *Conf) RemovePath(name string) error {
 	if _, ok := conf.OptionalPaths[name]; !ok {
 		return ErrPathNotFound
 	}
+
+	_ = conf.DeletePathFromJsonFile(name)
 
 	delete(conf.OptionalPaths, name)
 	return nil

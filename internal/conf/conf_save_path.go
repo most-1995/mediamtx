@@ -65,3 +65,67 @@ func (conf *Conf) ReadPathFromJsonFile() map[string]*OptionalPath {
 	return mapPath
 
 }
+
+func (conf *Conf) DeletePathFromJsonFile(name string) string {
+	data, err := os.ReadFile("./saved_path/save_path.json")
+	if err != nil {
+		return ""
+	}
+
+	storePath := []StorePath{}
+
+	err = json.Unmarshal(data, &storePath)
+
+	if err != nil {
+		return ""
+	}
+
+	for i, path := range storePath {
+		if path.Name == name {
+			storePath = append(storePath[:i], storePath[i+1:]...)
+			break
+		}
+	}
+
+	jsonData, err := json.Marshal(storePath)
+
+	if err != nil {
+		return ""
+	}
+
+	_ = os.WriteFile("./saved_path/save_path.json", jsonData, 0644)
+
+	return ""
+}
+
+func (conf *Conf) UpdatePathFromJsonFile(name string, p *OptionalPath) string {
+	data, err := os.ReadFile("./saved_path/save_path.json")
+	if err != nil {
+		return ""
+	}
+
+	storePath := []StorePath{}
+
+	err = json.Unmarshal(data, &storePath)
+
+	if err != nil {
+		return ""
+	}
+
+	for i, path := range storePath {
+		if path.Name == name {
+			storePath[i].OptionalPath = p
+			break
+		}
+	}
+
+	jsonData, err := json.Marshal(storePath)
+
+	if err != nil {
+		return ""
+	}
+
+	_ = os.WriteFile("./saved_path/save_path.json", jsonData, 0644)
+
+	return ""
+}
