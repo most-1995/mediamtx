@@ -8,6 +8,8 @@ RUN go build -o ./mediamtx .
 
 FROM --platform=linux/amd64 alpine:3.17
 
+WORKDIR /bin
+
 COPY --from=builder /build .
 
 EXPOSE 8000
