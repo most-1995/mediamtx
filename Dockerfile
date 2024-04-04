@@ -6,10 +6,9 @@ COPY . .
 
 RUN go build -o ./mediamtx .
 
-# FROM --platform=linux/amd64 alpine:3.17
+FROM --platform=linux/amd64 alpine:3.17
 
-# COPY --from=builder /build/mediamtx .
-# COPY --from=builder /build/mediamtx.yml ./mediamtx.yml
+COPY --from=builder /build .
 
 EXPOSE 8000
 EXPOSE 9000
