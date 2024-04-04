@@ -538,3 +538,15 @@ func (pm *pathManager) APIPathsGet(name string) (*defs.APIPath, error) {
 		return nil, fmt.Errorf("terminated")
 	}
 }
+
+func (pm *pathManager) APIPathsGetByNames(names []string) ([]*defs.APIPath, error) {
+	var paths []*defs.APIPath
+	for _, name := range names {
+		path, err := pm.APIPathsGet(name)
+		if err != nil {
+			return nil, err
+		}
+		paths = append(paths, path)
+	}
+	return paths, nil
+}

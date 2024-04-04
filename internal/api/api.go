@@ -113,6 +113,7 @@ func paramName(ctx *gin.Context) (string, bool) {
 type PathManager interface {
 	APIPathsList() (*defs.APIPathList, error)
 	APIPathsGet(string) (*defs.APIPath, error)
+	APIPathsGetByNames(names []string) ([]*defs.APIPath, error)
 }
 
 // HLSServer contains methods used by the API and Metrics server.
@@ -198,6 +199,7 @@ func (a *API) Initialize() error {
 
 	group.GET("/v3/paths/list", a.onPathsList)
 	group.GET("/v3/paths/get/*name", a.onPathsGet)
+	group.GET("/v3/paths/listpathsbynames", a.onPathsListPathsByNames)
 
 	if !interfaceIsEmpty(a.HLSServer) {
 		group.GET("/v3/hlsmuxers/list", a.onHLSMuxersList)
@@ -610,6 +612,27 @@ func (a *API) onPathsGet(ctx *gin.Context) {
 	}
 
 	data, err := a.PathManager.APIPathsGet(pathName)
+	if err != nil {
+		if errors.Is(err, conf.ErrPathNotFound) {
+			a.writeError(ctx, http.StatusNotFound, err)
+		} else {
+			a.writeError(ctx, http.StatusInternalServerError, err)
+		}
+		return
+	}
+
+	ctx.JSON(http.StatusOK, data)
+}
+
+func (a *API) onPathsListPathsByNames(ctx *gin.Context) {
+
+	_ = ctx.Request.ParseForm()
+	paths := ctx.Request.Form["names"]
+
+	fmt.Println("pathNames: ", paths)
+
+	data, err := a.PathManager.APIPathsGetByNames(paths)
+
 	if err != nil {
 		if errors.Is(err, conf.ErrPathNotFound) {
 			a.writeError(ctx, http.StatusNotFound, err)

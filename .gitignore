@@ -3,3 +3,7 @@
 /coverage*.txt
 /apidocs/*.html
 **/hls.min.js
+/recordings
+/saved-path
+/saved_path
+

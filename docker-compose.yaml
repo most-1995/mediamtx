@@ -11,8 +11,8 @@ services:
         MTX_WEBRTCADDITIONALHOSTS: 192.168.x.x
       volumes:
         # - ./mediamtx/mediamtx.yml:/mediamtx.yml
-        - ./recordings:/recordings
-        - ./saved_path:/saved_path
+        - ./recordings:/bin/recordings
+        - ./saved-path:/bin/saved_path
       ports:
         - "8554:8554"
         - "1934:1935"
