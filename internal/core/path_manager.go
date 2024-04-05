@@ -544,9 +544,10 @@ func (pm *pathManager) APIPathsGetByNames(names []string) ([]*defs.APIPath, erro
 	for _, name := range names {
 		path, err := pm.APIPathsGet(name)
 		if err != nil {
-			return nil, err
+			pm.Log(logger.Error, "failed to get path %s: %s", name, err)
+		} else {
+			paths = append(paths, path)
 		}
-		paths = append(paths, path)
 	}
 	return paths, nil
 }
