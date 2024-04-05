@@ -433,6 +433,11 @@ func (a *API) onConfigPathsGet(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, p)
 }
 
+type DefaultPathData struct {
+	Name   string `json:"name"`
+	Source string `json:"source"`
+}
+
 func (a *API) onConfigPathsAdd(ctx *gin.Context) { //nolint:dupl
 	confName, ok := paramName(ctx)
 	if !ok {
@@ -444,6 +449,34 @@ func (a *API) onConfigPathsAdd(ctx *gin.Context) { //nolint:dupl
 	err := json.NewDecoder(ctx.Request.Body).Decode(&p)
 	if err != nil {
 		a.writeError(ctx, http.StatusBadRequest, err)
+		return
+	}
+
+	pma, err := p.MarshalJSON()
+
+	if err != nil {
+		fmt.Println("encode error: ", err)
+		a.writeError(ctx, http.StatusBadRequest, err)
+		return
+	}
+
+	dfP := DefaultPathData{}
+
+	err = json.Unmarshal(pma, &dfP)
+
+	if err != nil {
+		fmt.Println("decode error: ", err)
+		a.writeError(ctx, http.StatusBadRequest, err)
+		return
+	}
+
+	if dfP.Source == "" {
+		a.writeError(ctx, http.StatusBadRequest, fmt.Errorf("source is required"))
+		return
+	}
+
+	if dfP.Name == "" {
+		a.writeError(ctx, http.StatusBadRequest, fmt.Errorf("name is required"))
 		return
 	}
 
@@ -481,6 +514,34 @@ func (a *API) onConfigPathsPatch(ctx *gin.Context) { //nolint:dupl
 	err := json.NewDecoder(ctx.Request.Body).Decode(&p)
 	if err != nil {
 		a.writeError(ctx, http.StatusBadRequest, err)
+		return
+	}
+
+	pma, err := p.MarshalJSON()
+
+	if err != nil {
+		fmt.Println("encode error: ", err)
+		a.writeError(ctx, http.StatusBadRequest, err)
+		return
+	}
+
+	dfP := DefaultPathData{}
+
+	err = json.Unmarshal(pma, &dfP)
+
+	if err != nil {
+		fmt.Println("decode error: ", err)
+		a.writeError(ctx, http.StatusBadRequest, err)
+		return
+	}
+
+	if dfP.Source == "" {
+		a.writeError(ctx, http.StatusBadRequest, fmt.Errorf("source is required"))
+		return
+	}
+
+	if dfP.Name == "" {
+		a.writeError(ctx, http.StatusBadRequest, fmt.Errorf("name is required"))
 		return
 	}
 
