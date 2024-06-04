@@ -154,6 +154,7 @@ outer:
 	for {
 		select {
 		case err := <-s.chAcceptErr:
+			fmt.Println("server 3")
 			s.Log(logger.Error, "%s", err)
 			break outer
 

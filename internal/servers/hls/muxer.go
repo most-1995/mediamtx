@@ -156,6 +156,7 @@ func (m *muxer) runInner() error {
 			return err
 		}
 
+		fmt.Println("muxer 1")
 		m.Log(logger.Error, err.Error())
 		mi = nil
 		instanceError = make(chan error)
@@ -188,6 +189,7 @@ func (m *muxer) runInner() error {
 				return err
 			}
 
+			fmt.Println("muxer 2")
 			m.Log(logger.Error, err.Error())
 			mi.close()
 			mi = nil
@@ -210,6 +212,7 @@ func (m *muxer) runInner() error {
 			}
 			err := mi.initialize()
 			if err != nil {
+				fmt.Println("muxer 3")
 				m.Log(logger.Error, err.Error())
 				mi = nil
 				recreateTimer = time.NewTimer(recreatePause)

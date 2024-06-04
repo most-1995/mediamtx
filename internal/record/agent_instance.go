@@ -1,6 +1,7 @@
 package record
 
 import (
+	"fmt"
 	"strings"
 	"time"
 
@@ -73,6 +74,7 @@ func (a *agentInstance) run() {
 
 	select {
 	case err := <-a.writer.Error():
+		fmt.Println("agent 1")
 		a.agent.Log(logger.Error, err.Error())
 		a.agent.Stream.RemoveReader(a.writer)
 

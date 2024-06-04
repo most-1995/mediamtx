@@ -156,8 +156,10 @@ func New(args []string) (*Core, bool) {
 	err = p.createResources(true)
 	if err != nil {
 		if p.logger != nil {
+			fmt.Println("core 1")
 			p.Log(logger.Error, "%s", err)
 		} else {
+			fmt.Println("core 2")
 			fmt.Printf("ERR: %s\n", err)
 		}
 		p.closeResources(nil, false)
@@ -206,12 +208,14 @@ outer:
 
 			newConf, _, err := conf.Load(p.confPath, nil)
 			if err != nil {
+				fmt.Println("core 3")
 				p.Log(logger.Error, "%s", err)
 				break outer
 			}
 
 			err = p.reloadConf(newConf, false)
 			if err != nil {
+				fmt.Println("core 4")
 				p.Log(logger.Error, "%s", err)
 				break outer
 			}
@@ -221,6 +225,7 @@ outer:
 
 			err := p.reloadConf(newConf, true)
 			if err != nil {
+				fmt.Println("core 5")
 				p.Log(logger.Error, "%s", err)
 				break outer
 			}

@@ -3,6 +3,7 @@ package core
 import (
 	"context"
 	"fmt"
+	"regexp"
 	"strings"
 	"time"
 
@@ -158,6 +159,16 @@ func (s *staticSourceHandler) Log(level logger.Level, format string, args ...int
 	s.parent.Log(level, format, args...)
 }
 
+func (s *staticSourceHandler) CheckPlayback(sn string) bool {
+	regexStr := "(?i)playback.*"
+	regexb := regexp.MustCompile(regexStr)
+
+	result := regexb.MatchString(sn)
+
+	return result
+
+}
+
 func (s *staticSourceHandler) run() {
 	defer close(s.done)
 
@@ -186,9 +197,18 @@ func (s *staticSourceHandler) run() {
 		select {
 		case err := <-runErr:
 			runCtxCancel()
+			fmt.Println("source 1")
 			s.instance.Log(logger.Error, err.Error())
-			recreating = true
-			recreateTimer = time.NewTimer(staticSourceHandlerRetryPause)
+			needRecreate := s.CheckPlayback(s.conf.Name)
+
+			fmt.Println("needRecreate: ", needRecreate)
+			if needRecreate {
+				recreating = false
+				return
+			} else {
+				recreating = needRecreate
+				recreateTimer = time.NewTimer(staticSourceHandlerRetryPause)
+			}
 
 		case req := <-s.chInstanceSetReady:
 			s.parent.staticSourceHandlerSetReady(s.ctx, req)

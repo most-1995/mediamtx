@@ -2,6 +2,7 @@
 package srt
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/bluenviron/gortsplib/v4/pkg/description"
@@ -55,12 +56,15 @@ func (s *Source) Run(params defs.StaticSourceRunParams) error {
 	for {
 		select {
 		case err := <-readDone:
+			fmt.Println("source 2 error ")
 			sconn.Close()
 			return err
 
 		case <-params.ReloadConf:
+			fmt.Println("source 3 reload")
 
 		case <-params.Context.Done():
+			fmt.Println("source 3 done")
 			sconn.Close()
 			<-readDone
 			return nil

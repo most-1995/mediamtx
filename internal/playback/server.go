@@ -116,6 +116,7 @@ func (p *Server) ReloadPathConfs(pathConfs map[string]*conf.Path) {
 
 func (p *Server) writeError(ctx *gin.Context, status int, err error) {
 	// show error in logs
+	fmt.Println("server 1")
 	p.Log(logger.Error, err.Error())
 
 	// add error to response
@@ -290,6 +291,7 @@ func (p *Server) onGet(ctx *gin.Context) {
 		}
 
 		// something has already been written: abort and write logs only
+		fmt.Println("server 2")
 		p.Log(logger.Error, err.Error())
 		return
 	}
@@ -313,6 +315,7 @@ func (p *Server) onGet(ctx *gin.Context) {
 			}
 
 			// something has been already written: abort and write to logs only
+			fmt.Println("server 3")
 			p.Log(logger.Error, err.Error())
 			return
 		}

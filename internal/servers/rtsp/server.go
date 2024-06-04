@@ -131,6 +131,7 @@ func (s *Server) Initialize() error {
 		return err
 	}
 
+	fmt.Println("RTSP server started")
 	s.Log(logger.Info, "listener opened on %s", printAddresses(s.srv))
 
 	s.wg.Add(1)
@@ -168,6 +169,7 @@ func (s *Server) run() {
 outer:
 	select {
 	case err := <-serverErr:
+		fmt.Println("RTSP server closed")
 		s.Log(logger.Error, "%s", err)
 		break outer
 
