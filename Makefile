@@ -4,6 +4,8 @@ NODE_IMAGE = node:20-alpine3.19
 ALPINE_IMAGE = alpine:3.19
 RPI32_IMAGE = balenalib/raspberry-pi:bullseye-run-20230712
 RPI64_IMAGE = balenalib/raspberrypi3-64:bullseye-run-20230530
+REGISTRY := 312933510661.dkr.ecr.ap-southeast-1.amazonaws.com
+IMAGE_NAME := scm-mediamtx
 
 .PHONY: $(shell ls)
 
@@ -34,3 +36,11 @@ $(blank)
 endef
 
 include scripts/*.mk
+
+docker-build:
+	docker build --platform linux/amd64 -t $(IMAGE_NAME) .
+
+deploy-ecr:
+	aws ecr get-login-password --region ap-southeast-1 --profile scmprofile | docker login --username AWS --password-stdin $(REGISTRY)
+	docker tag $(IMAGE_NAME):latest $(REGISTRY)/$(IMAGE_NAME):latest
+	docker push $(REGISTRY)/$(IMAGE_NAME):latest

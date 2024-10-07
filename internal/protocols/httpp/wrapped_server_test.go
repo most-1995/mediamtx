@@ -8,7 +8,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/bluenviron/mediamtx/internal/logger"
+	"github.com/most-1995/mediamtx/internal/logger"
 )
 
 type testLogger struct{}

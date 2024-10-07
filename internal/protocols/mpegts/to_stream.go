@@ -9,8 +9,8 @@ import (
 	"github.com/bluenviron/gortsplib/v4/pkg/format"
 	"github.com/bluenviron/mediacommon/pkg/formats/mpegts"
 
-	"github.com/bluenviron/mediamtx/internal/stream"
-	"github.com/bluenviron/mediamtx/internal/unit"
+	"github.com/most-1995/mediamtx/internal/stream"
+	"github.com/most-1995/mediamtx/internal/unit"
 )
 
 // ErrNoTracks is returned when there are no supported tracks.

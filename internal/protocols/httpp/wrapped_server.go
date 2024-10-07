@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/bluenviron/mediamtx/internal/logger"
+	"github.com/most-1995/mediamtx/internal/logger"
 )
 
 type nilWriter struct{}

@@ -4,10 +4,10 @@
   <br>
   <br>
 
-  [![Test](https://github.com/bluenviron/mediamtx/workflows/test/badge.svg)](https://github.com/bluenviron/mediamtx/actions?query=workflow:test)
-  [![Lint](https://github.com/bluenviron/mediamtx/workflows/lint/badge.svg)](https://github.com/bluenviron/mediamtx/actions?query=workflow:lint)
+  [![Test](https://github.com/most-1995/mediamtx/workflows/test/badge.svg)](https://github.com/most-1995/mediamtx/actions?query=workflow:test)
+  [![Lint](https://github.com/most-1995/mediamtx/workflows/lint/badge.svg)](https://github.com/most-1995/mediamtx/actions?query=workflow:lint)
   [![CodeCov](https://codecov.io/gh/bluenviron/mediamtx/branch/main/graph/badge.svg)](https://app.codecov.io/gh/bluenviron/mediamtx/branch/main)
-  [![Release](https://img.shields.io/github/v/release/bluenviron/mediamtx)](https://github.com/bluenviron/mediamtx/releases)
+  [![Release](https://img.shields.io/github/v/release/bluenviron/mediamtx)](https://github.com/most-1995/mediamtx/releases)
   [![Docker Hub](https://img.shields.io/badge/docker-bluenviron/mediamtx-blue)](https://hub.docker.com/r/bluenviron/mediamtx)
   [![API Documentation](https://img.shields.io/badge/api-documentation-blue)](https://bluenviron.github.io/mediamtx)
 </h1>
@@ -157,7 +157,7 @@ There are several installation methods available: standalone binary, Docker imag
 
 ### Standalone binary
 
-1. Download and extract a standalone binary from the [release page](https://github.com/bluenviron/mediamtx/releases) that corresponds to your operating system and architecture.
+1. Download and extract a standalone binary from the [release page](https://github.com/most-1995/mediamtx/releases) that corresponds to your operating system and architecture.
 
 2. Start the server:
 
@@ -1976,7 +1976,7 @@ Be aware that RTMPS is currently unsupported by all major players. However, you 
 Install git and Go &ge; 1.21. Clone the repository, enter into the folder and start the building process:
 
 ```sh
-git clone https://github.com/bluenviron/mediamtx
+git clone https://github.com/most-1995/mediamtx
 cd mediamtx
 go generate ./...
 CGO_ENABLED=0 go build .
@@ -2017,7 +2017,7 @@ opkg install golang git git-http
 Clone the repository, enter into the folder and start the building process:
 
 ```sh
-git clone https://github.com/bluenviron/mediamtx
+git clone https://github.com/most-1995/mediamtx
 cd mediamtx
 go generate ./...
 CGO_ENABLED=0 go build .
@@ -2034,7 +2034,7 @@ Cross compilation allows to build an executable for a target machine from anothe
 On the machine you want to use to compile, install git and Go &ge; 1.21. Clone the repository, enter into the folder and start the building process:
 
 ```sh
-git clone https://github.com/bluenviron/mediamtx
+git clone https://github.com/most-1995/mediamtx
 cd mediamtx
 go generate ./...
 CGO_ENABLED=0 GOOS=my_os GOARCH=my_arch go build .

@@ -4,7 +4,7 @@ import (
 	"github.com/bluenviron/gortsplib/v4/pkg/description"
 	"github.com/bluenviron/gortsplib/v4/pkg/format"
 
-	"github.com/bluenviron/mediamtx/internal/logger"
+	"github.com/most-1995/mediamtx/internal/logger"
 )
 
 type streamMedia struct {

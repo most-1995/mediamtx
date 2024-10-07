@@ -9,10 +9,10 @@ import (
 	"github.com/bluenviron/gortsplib/v4/pkg/headers"
 	"github.com/pion/rtp"
 
-	"github.com/bluenviron/mediamtx/internal/conf"
-	"github.com/bluenviron/mediamtx/internal/defs"
-	"github.com/bluenviron/mediamtx/internal/logger"
-	"github.com/bluenviron/mediamtx/internal/protocols/tls"
+	"github.com/most-1995/mediamtx/internal/conf"
+	"github.com/most-1995/mediamtx/internal/defs"
+	"github.com/most-1995/mediamtx/internal/logger"
+	"github.com/most-1995/mediamtx/internal/protocols/tls"
 )
 
 func createRangeHeader(cnf *conf.Path) (*headers.Range, error) {

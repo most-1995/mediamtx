@@ -6,12 +6,12 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/bluenviron/mediamtx/internal/auth"
-	"github.com/bluenviron/mediamtx/internal/conf"
-	"github.com/bluenviron/mediamtx/internal/defs"
-	"github.com/bluenviron/mediamtx/internal/externalcmd"
-	"github.com/bluenviron/mediamtx/internal/logger"
-	"github.com/bluenviron/mediamtx/internal/stream"
+	"github.com/most-1995/mediamtx/internal/auth"
+	"github.com/most-1995/mediamtx/internal/conf"
+	"github.com/most-1995/mediamtx/internal/defs"
+	"github.com/most-1995/mediamtx/internal/externalcmd"
+	"github.com/most-1995/mediamtx/internal/logger"
+	"github.com/most-1995/mediamtx/internal/stream"
 )
 
 func pathConfCanBeUpdated(oldPathConf *conf.Path, newPathConf *conf.Path) bool {

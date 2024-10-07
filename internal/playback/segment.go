@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/bluenviron/mediamtx/internal/conf"
-	"github.com/bluenviron/mediamtx/internal/record"
+	"github.com/most-1995/mediamtx/internal/conf"
+	"github.com/most-1995/mediamtx/internal/record"
 )
 
 // Segment is a recording segment.

@@ -10,13 +10,13 @@ import (
 	"github.com/bluenviron/gohlslib"
 	"github.com/bluenviron/gohlslib/pkg/codecs"
 	"github.com/bluenviron/gortsplib/v4/pkg/format"
-	"github.com/bluenviron/mediamtx/internal/asyncwriter"
-	"github.com/bluenviron/mediamtx/internal/conf"
-	"github.com/bluenviron/mediamtx/internal/defs"
-	"github.com/bluenviron/mediamtx/internal/logger"
-	"github.com/bluenviron/mediamtx/internal/stream"
-	"github.com/bluenviron/mediamtx/internal/unit"
 	"github.com/gin-gonic/gin"
+	"github.com/most-1995/mediamtx/internal/asyncwriter"
+	"github.com/most-1995/mediamtx/internal/conf"
+	"github.com/most-1995/mediamtx/internal/defs"
+	"github.com/most-1995/mediamtx/internal/logger"
+	"github.com/most-1995/mediamtx/internal/stream"
+	"github.com/most-1995/mediamtx/internal/unit"
 )
 
 var errNoSupportedCodecs = errors.New(

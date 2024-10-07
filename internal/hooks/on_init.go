@@ -1,9 +1,9 @@
 package hooks
 
 import (
-	"github.com/bluenviron/mediamtx/internal/conf"
-	"github.com/bluenviron/mediamtx/internal/externalcmd"
-	"github.com/bluenviron/mediamtx/internal/logger"
+	"github.com/most-1995/mediamtx/internal/conf"
+	"github.com/most-1995/mediamtx/internal/externalcmd"
+	"github.com/most-1995/mediamtx/internal/logger"
 )
 
 // OnInitParams are the parameters of OnInit.

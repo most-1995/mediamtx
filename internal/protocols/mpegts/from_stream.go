@@ -12,9 +12,9 @@ import (
 	mcmpegts "github.com/bluenviron/mediacommon/pkg/formats/mpegts"
 	srt "github.com/datarhei/gosrt"
 
-	"github.com/bluenviron/mediamtx/internal/asyncwriter"
-	"github.com/bluenviron/mediamtx/internal/stream"
-	"github.com/bluenviron/mediamtx/internal/unit"
+	"github.com/most-1995/mediamtx/internal/asyncwriter"
+	"github.com/most-1995/mediamtx/internal/stream"
+	"github.com/most-1995/mediamtx/internal/unit"
 )
 
 func durationGoToMPEGTS(v time.Duration) int64 {

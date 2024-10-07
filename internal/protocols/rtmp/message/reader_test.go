@@ -7,8 +7,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/bluenviron/mediamtx/internal/protocols/rtmp/amf0"
-	"github.com/bluenviron/mediamtx/internal/protocols/rtmp/bytecounter"
+	"github.com/most-1995/mediamtx/internal/protocols/rtmp/amf0"
+	"github.com/most-1995/mediamtx/internal/protocols/rtmp/bytecounter"
 )
 
 var readWriterCases = []struct {

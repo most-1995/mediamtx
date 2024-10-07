@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/bluenviron/mediamtx/internal/core"
+	"github.com/most-1995/mediamtx/internal/core"
 )
 
 func main() {

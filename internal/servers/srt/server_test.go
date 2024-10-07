@@ -7,15 +7,15 @@ import (
 
 	"github.com/bluenviron/gortsplib/v4/pkg/description"
 	"github.com/bluenviron/mediacommon/pkg/formats/mpegts"
-	"github.com/bluenviron/mediamtx/internal/asyncwriter"
-	"github.com/bluenviron/mediamtx/internal/auth"
-	"github.com/bluenviron/mediamtx/internal/conf"
-	"github.com/bluenviron/mediamtx/internal/defs"
-	"github.com/bluenviron/mediamtx/internal/externalcmd"
-	"github.com/bluenviron/mediamtx/internal/stream"
-	"github.com/bluenviron/mediamtx/internal/test"
-	"github.com/bluenviron/mediamtx/internal/unit"
 	srt "github.com/datarhei/gosrt"
+	"github.com/most-1995/mediamtx/internal/asyncwriter"
+	"github.com/most-1995/mediamtx/internal/auth"
+	"github.com/most-1995/mediamtx/internal/conf"
+	"github.com/most-1995/mediamtx/internal/defs"
+	"github.com/most-1995/mediamtx/internal/externalcmd"
+	"github.com/most-1995/mediamtx/internal/stream"
+	"github.com/most-1995/mediamtx/internal/test"
+	"github.com/most-1995/mediamtx/internal/unit"
 	"github.com/stretchr/testify/require"
 )
 

@@ -7,10 +7,10 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/bluenviron/mediamtx/internal/conf"
-	"github.com/bluenviron/mediamtx/internal/defs"
-	"github.com/bluenviron/mediamtx/internal/playback"
-	"github.com/bluenviron/mediamtx/internal/record"
+	"github.com/most-1995/mediamtx/internal/conf"
+	"github.com/most-1995/mediamtx/internal/defs"
+	"github.com/most-1995/mediamtx/internal/playback"
+	"github.com/most-1995/mediamtx/internal/record"
 )
 
 var errFound = errors.New("found")

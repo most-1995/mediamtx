@@ -3,8 +3,8 @@ package message
 import (
 	"io"
 
-	"github.com/bluenviron/mediamtx/internal/protocols/rtmp/bytecounter"
-	"github.com/bluenviron/mediamtx/internal/protocols/rtmp/rawmessage"
+	"github.com/most-1995/mediamtx/internal/protocols/rtmp/bytecounter"
+	"github.com/most-1995/mediamtx/internal/protocols/rtmp/rawmessage"
 )
 
 // Writer is a message writer.

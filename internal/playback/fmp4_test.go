@@ -7,7 +7,7 @@ import (
 
 	"github.com/bluenviron/mediacommon/pkg/codecs/mpeg4audio"
 	"github.com/bluenviron/mediacommon/pkg/formats/fmp4"
-	"github.com/bluenviron/mediamtx/internal/test"
+	"github.com/most-1995/mediamtx/internal/test"
 )
 
 func writeBenchInit(f io.WriteSeeker) {

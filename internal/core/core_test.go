@@ -8,7 +8,7 @@ import (
 
 	"github.com/bluenviron/gortsplib/v4"
 	"github.com/bluenviron/gortsplib/v4/pkg/description"
-	"github.com/bluenviron/mediamtx/internal/test"
+	"github.com/most-1995/mediamtx/internal/test"
 	"github.com/stretchr/testify/require"
 )
 

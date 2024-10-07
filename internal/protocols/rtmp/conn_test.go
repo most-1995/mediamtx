@@ -8,10 +8,10 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/bluenviron/mediamtx/internal/protocols/rtmp/amf0"
-	"github.com/bluenviron/mediamtx/internal/protocols/rtmp/bytecounter"
-	"github.com/bluenviron/mediamtx/internal/protocols/rtmp/handshake"
-	"github.com/bluenviron/mediamtx/internal/protocols/rtmp/message"
+	"github.com/most-1995/mediamtx/internal/protocols/rtmp/amf0"
+	"github.com/most-1995/mediamtx/internal/protocols/rtmp/bytecounter"
+	"github.com/most-1995/mediamtx/internal/protocols/rtmp/handshake"
+	"github.com/most-1995/mediamtx/internal/protocols/rtmp/message"
 )
 
 func TestNewClientConn(t *testing.T) {

@@ -10,7 +10,7 @@ import (
 	"github.com/bluenviron/gortsplib/v4/pkg/auth"
 	"github.com/bluenviron/gortsplib/v4/pkg/base"
 	"github.com/bluenviron/gortsplib/v4/pkg/headers"
-	"github.com/bluenviron/mediamtx/internal/conf"
+	"github.com/most-1995/mediamtx/internal/conf"
 	"github.com/stretchr/testify/require"
 )
 

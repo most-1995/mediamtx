@@ -23,10 +23,10 @@ import (
 	"github.com/pion/rtp"
 	"github.com/stretchr/testify/require"
 
-	"github.com/bluenviron/mediamtx/internal/defs"
-	"github.com/bluenviron/mediamtx/internal/protocols/rtmp"
-	"github.com/bluenviron/mediamtx/internal/protocols/webrtc"
-	"github.com/bluenviron/mediamtx/internal/test"
+	"github.com/most-1995/mediamtx/internal/defs"
+	"github.com/most-1995/mediamtx/internal/protocols/rtmp"
+	"github.com/most-1995/mediamtx/internal/protocols/webrtc"
+	"github.com/most-1995/mediamtx/internal/test"
 )
 
 var runOnDemandSampleScript = `

@@ -12,13 +12,15 @@ import (
 	"github.com/bluenviron/gortsplib/v4/pkg/base"
 	"github.com/bluenviron/gortsplib/v4/pkg/description"
 
-	"github.com/bluenviron/mediamtx/internal/conf"
-	"github.com/bluenviron/mediamtx/internal/defs"
-	"github.com/bluenviron/mediamtx/internal/externalcmd"
-	"github.com/bluenviron/mediamtx/internal/hooks"
-	"github.com/bluenviron/mediamtx/internal/logger"
-	"github.com/bluenviron/mediamtx/internal/record"
-	"github.com/bluenviron/mediamtx/internal/stream"
+	// "github.com/most-1995/mediamtx/internal/conf"
+
+	"github.com/most-1995/mediamtx/internal/conf"
+	"github.com/most-1995/mediamtx/internal/defs"
+	"github.com/most-1995/mediamtx/internal/externalcmd"
+	"github.com/most-1995/mediamtx/internal/hooks"
+	"github.com/most-1995/mediamtx/internal/logger"
+	"github.com/most-1995/mediamtx/internal/record"
+	"github.com/most-1995/mediamtx/internal/stream"
 )
 
 func emptyTimer() *time.Timer {
@@ -373,6 +375,8 @@ func (pa *path) doReloadConf(newConf *conf.Path) {
 	if pa.conf.HasStaticSource() {
 		go pa.source.(*staticSourceHandler).reloadConf(newConf)
 	}
+
+	// isLiveorPlayback := CheckPlayback()
 
 	if pa.conf.Record {
 		if pa.stream != nil && pa.recordAgent == nil {

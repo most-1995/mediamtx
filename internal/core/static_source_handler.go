@@ -7,16 +7,16 @@ import (
 	"strings"
 	"time"
 
-	"github.com/bluenviron/mediamtx/internal/conf"
-	"github.com/bluenviron/mediamtx/internal/defs"
-	"github.com/bluenviron/mediamtx/internal/logger"
-	hlssource "github.com/bluenviron/mediamtx/internal/staticsources/hls"
-	rpicamerasource "github.com/bluenviron/mediamtx/internal/staticsources/rpicamera"
-	rtmpsource "github.com/bluenviron/mediamtx/internal/staticsources/rtmp"
-	rtspsource "github.com/bluenviron/mediamtx/internal/staticsources/rtsp"
-	srtsource "github.com/bluenviron/mediamtx/internal/staticsources/srt"
-	udpsource "github.com/bluenviron/mediamtx/internal/staticsources/udp"
-	webrtcsource "github.com/bluenviron/mediamtx/internal/staticsources/webrtc"
+	conf "github.com/most-1995/mediamtx/internal/conf"
+	"github.com/most-1995/mediamtx/internal/defs"
+	"github.com/most-1995/mediamtx/internal/logger"
+	hlssource "github.com/most-1995/mediamtx/internal/staticsources/hls"
+	rpicamerasource "github.com/most-1995/mediamtx/internal/staticsources/rpicamera"
+	rtmpsource "github.com/most-1995/mediamtx/internal/staticsources/rtmp"
+	rtspsource "github.com/most-1995/mediamtx/internal/staticsources/rtsp"
+	srtsource "github.com/most-1995/mediamtx/internal/staticsources/srt"
+	udpsource "github.com/most-1995/mediamtx/internal/staticsources/udp"
+	webrtcsource "github.com/most-1995/mediamtx/internal/staticsources/webrtc"
 )
 
 const (
@@ -160,10 +160,14 @@ func (s *staticSourceHandler) Log(level logger.Level, format string, args ...int
 }
 
 func (s *staticSourceHandler) CheckPlayback(sn string) bool {
-	regexStr := "(?i)playback.*"
+	s.parent.Log(logger.Info, "CheckPlayback source : %s", sn)
+
+	regexStr := "(?i)(playback|live).*"
 	regexb := regexp.MustCompile(regexStr)
 
 	result := regexb.MatchString(sn)
+
+	s.parent.Log(logger.Info, "CheckPlayback: ", result)
 
 	return result
 
@@ -203,8 +207,9 @@ func (s *staticSourceHandler) run() {
 
 			fmt.Println("needRecreate: ", needRecreate)
 			if needRecreate {
-				recreating = false
-				return
+				emptyPathConfig := conf.Conf{}
+				emptyPathConfig.RemovePath(s.conf.Name)
+				recreating = true
 			} else {
 				recreating = needRecreate
 				recreateTimer = time.NewTimer(staticSourceHandlerRetryPause)

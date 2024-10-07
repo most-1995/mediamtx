@@ -1,6 +1,6 @@
 package test
 
-import "github.com/bluenviron/mediamtx/internal/logger"
+import "github.com/most-1995/mediamtx/internal/logger"
 
 // NilLogger is a logger to /dev/null
 type NilLogger struct{}

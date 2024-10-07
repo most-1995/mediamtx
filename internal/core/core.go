@@ -8,6 +8,7 @@ import (
 	"os/signal"
 	"path/filepath"
 	"reflect"
+	"regexp"
 	"sort"
 	"strings"
 	"time"
@@ -16,22 +17,22 @@ import (
 	"github.com/bluenviron/gortsplib/v4"
 	"github.com/gin-gonic/gin"
 
-	"github.com/bluenviron/mediamtx/internal/api"
-	"github.com/bluenviron/mediamtx/internal/auth"
-	"github.com/bluenviron/mediamtx/internal/conf"
-	"github.com/bluenviron/mediamtx/internal/confwatcher"
-	"github.com/bluenviron/mediamtx/internal/externalcmd"
-	"github.com/bluenviron/mediamtx/internal/logger"
-	"github.com/bluenviron/mediamtx/internal/metrics"
-	"github.com/bluenviron/mediamtx/internal/playback"
-	"github.com/bluenviron/mediamtx/internal/pprof"
-	"github.com/bluenviron/mediamtx/internal/record"
-	"github.com/bluenviron/mediamtx/internal/rlimit"
-	"github.com/bluenviron/mediamtx/internal/servers/hls"
-	"github.com/bluenviron/mediamtx/internal/servers/rtmp"
-	"github.com/bluenviron/mediamtx/internal/servers/rtsp"
-	"github.com/bluenviron/mediamtx/internal/servers/srt"
-	"github.com/bluenviron/mediamtx/internal/servers/webrtc"
+	"github.com/most-1995/mediamtx/internal/api"
+	"github.com/most-1995/mediamtx/internal/auth"
+	"github.com/most-1995/mediamtx/internal/conf"
+	"github.com/most-1995/mediamtx/internal/confwatcher"
+	"github.com/most-1995/mediamtx/internal/externalcmd"
+	"github.com/most-1995/mediamtx/internal/logger"
+	"github.com/most-1995/mediamtx/internal/metrics"
+	"github.com/most-1995/mediamtx/internal/playback"
+	"github.com/most-1995/mediamtx/internal/pprof"
+	"github.com/most-1995/mediamtx/internal/record"
+	"github.com/most-1995/mediamtx/internal/rlimit"
+	"github.com/most-1995/mediamtx/internal/servers/hls"
+	"github.com/most-1995/mediamtx/internal/servers/rtmp"
+	"github.com/most-1995/mediamtx/internal/servers/rtsp"
+	"github.com/most-1995/mediamtx/internal/servers/srt"
+	"github.com/most-1995/mediamtx/internal/servers/webrtc"
 )
 
 var version = "v0.0.0"
@@ -74,6 +75,15 @@ func gatherCleanerEntries(paths map[string]*conf.Path) []record.CleanerEntry {
 	})
 
 	return out2
+}
+
+func CheckPlaybackAndLiveName(sourceName string) bool {
+	regexStr := "(?i)(playback|live).*"
+	regexb := regexp.MustCompile(regexStr)
+
+	result := regexb.MatchString(sourceName)
+
+	return result
 }
 
 var cli struct {

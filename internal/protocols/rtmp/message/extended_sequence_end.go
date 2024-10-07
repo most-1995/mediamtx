@@ -3,7 +3,7 @@ package message
 import (
 	"fmt"
 
-	"github.com/bluenviron/mediamtx/internal/protocols/rtmp/rawmessage"
+	"github.com/most-1995/mediamtx/internal/protocols/rtmp/rawmessage"
 )
 
 // ExtendedSequenceEnd is a sequence end extended message.

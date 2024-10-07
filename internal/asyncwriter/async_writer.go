@@ -6,7 +6,7 @@ import (
 
 	"github.com/bluenviron/gortsplib/v4/pkg/ringbuffer"
 
-	"github.com/bluenviron/mediamtx/internal/logger"
+	"github.com/most-1995/mediamtx/internal/logger"
 )
 
 // Writer is an asynchronous writer.
