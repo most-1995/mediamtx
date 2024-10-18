@@ -367,7 +367,17 @@ func (pa *path) doReloadConf(newConf *conf.Path) {
 	}
 
 	if pa.conf.Record {
-		if pa.stream != nil && pa.recorder == nil {
+
+		pathName := pa.name
+
+		fmt.Println("configs in reload conf function: ", pa.conf)
+
+		checkNotRecord := pa.checkContainLiveStream(pathName)
+
+		fmt.Println("checkNotRecord in reload conf function: ", checkNotRecord)
+
+		fmt.Println("pathName in de reload conf function: ", pathName)
+		if pa.stream != nil && pa.recorder == nil && !checkNotRecord {
 			pa.startRecording()
 		}
 	} else if pa.recorder != nil {
@@ -722,7 +732,21 @@ func (pa *path) setReady(desc *description.Session, allocateEncoder bool) error 
 	}
 
 	if pa.conf.Record {
-		pa.startRecording()
+
+		pathName := pa.name
+
+		fmt.Println("configs in reload conf function: ", pa.conf)
+
+		checkNotRecord := pa.checkContainLiveStream(pathName)
+
+		fmt.Println("checkNotRecord in reload conf function: ", checkNotRecord)
+
+		fmt.Println("pathName in set ready function : ", pathName)
+
+		if !checkNotRecord {
+			pa.startRecording()
+		}
+
 	}
 
 	pa.readyTime = time.Now()
@@ -995,4 +1019,11 @@ func (pa *path) APIPathsGet(req pathAPIPathsGetReq) (*defs.APIPath, error) {
 	case <-pa.ctx.Done():
 		return nil, fmt.Errorf("terminated")
 	}
+}
+
+func (pa *path) checkContainLiveStream(pathName string) bool {
+	if strings.Contains(strings.ToLower(pathName), "playback") {
+		return true
+	}
+	return false
 }
